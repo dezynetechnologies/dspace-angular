@@ -1,0 +1,20 @@
+<div class="chatbot-container">
+    <div class="chat-container">
+      <div class="chat-box" #chatBox>
+        <div class="message bot-message">Hi! How can I help you today?</div>
+      </div>
+      <div class="input-box">
+        <div class="input-buttons">
+            <button class="attachment-button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
+            <button class="microphone-button" onclick="annyang.start()"><i class="fas fa-microphone"></i></button>
+        </div>
+        <input type="text" #userInput placeholder="Type your message here..." (keypress)="onKeyPress($event)">
+        <button (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+</div>
+  
+  
+
+
+
