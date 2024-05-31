@@ -545,6 +545,19 @@ export class MenuResolver implements Resolve<boolean> {
           icon: 'search',
           index: 5
         },
+        /* Samvad AI Chatbot */
+        {
+          id: 'samvad-ai-chatbot',
+          active: false,
+          visible: authorized,
+          model: {
+            type: MenuItemType.LINK,
+            text: 'menu.section.samvad-ai',
+            link: '/admin/samvad-ai'
+          } as LinkMenuItemModel,
+          icon: 'search',
+          index: 6
+        },
         /*  Registries */
         {
           id: 'registries',
@@ -555,7 +568,7 @@ export class MenuResolver implements Resolve<boolean> {
             text: 'menu.section.registries'
           } as TextMenuItemModel,
           icon: 'list',
-          index: 6
+          index: 7
         },
         {
           id: 'registries_metadata',
@@ -591,7 +604,7 @@ export class MenuResolver implements Resolve<boolean> {
             link: 'admin/curation-tasks'
           } as LinkMenuItemModel,
           icon: 'filter',
-          index: 7
+          index: 8
         },
 
         /* Workflow */
@@ -605,7 +618,7 @@ export class MenuResolver implements Resolve<boolean> {
             link: '/admin/workflow'
           } as LinkMenuItemModel,
           icon: 'user-check',
-          index: 11
+          index: 12
         },
         {
           id: 'system_wide_alert',
@@ -617,7 +630,7 @@ export class MenuResolver implements Resolve<boolean> {
             link: '/admin/system-wide-alert'
           } as LinkMenuItemModel,
           icon: 'exclamation-circle',
-          index: 12
+          index: 13
         },
       ];
 

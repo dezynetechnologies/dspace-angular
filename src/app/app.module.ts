@@ -30,6 +30,7 @@ import { EagerThemesModule } from '../themes/eager-themes.module';
 import { APP_CONFIG, AppConfig } from '../config/app-config.interface';
 import { StoreDevModules } from '../config/store/devtools';
 import { RootModule } from './root.module';
+import { FormsModule } from '@angular/forms';  // Import FormsModule
 
 export function getConfig() {
   return environment;
@@ -47,6 +48,7 @@ export function getMetaReducers(appConfig: AppConfig): MetaReducer<AppState>[] {
 
 const IMPORTS = [
   CommonModule,
+  FormsModule,
   SharedModule,
   NavbarModule,
   HttpClientModule,

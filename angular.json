@@ -65,14 +65,6 @@
             "baseHref": "/"
           },
           "configurations": {
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            },
             "production": {
               "fileReplacements": [
                 {
@@ -103,8 +95,17 @@
                   "maximumError": "300kb"
                 }
               ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
@@ -113,11 +114,11 @@
             "port": 4000
           },
           "configurations": {
-            "development": {
-              "browserTarget": "dspace-angular:build:development"
-            },
             "production": {
               "browserTarget": "dspace-angular:build:production"
+            },
+            "development": {
+              "browserTarget": "dspace-angular:build:development"
             }
           }
         },

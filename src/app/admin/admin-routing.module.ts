@@ -8,6 +8,7 @@ import { I18nBreadcrumbsService } from '../core/breadcrumbs/i18n-breadcrumbs.ser
 import { AdminCurationTasksComponent } from './admin-curation-tasks/admin-curation-tasks.component';
 import { REGISTRIES_MODULE_PATH } from './admin-routing-paths';
 import { BatchImportPageComponent } from './admin-import-batch-page/batch-import-page.component';
+import { SamvadAISearchPageComponent } from './samvad-ai-search-page/samvad-ai-search-page.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,12 @@ import { BatchImportPageComponent } from './admin-import-batch-page/batch-import
         resolve: { breadcrumb: I18nBreadcrumbResolver },
         component: AdminSearchPageComponent,
         data: { title: 'admin.search.title', breadcrumbKey: 'admin.search' }
+      },
+      {
+        path: 'samvad-ai',
+        resolve: { breadcrumb: I18nBreadcrumbResolver },
+        component: SamvadAISearchPageComponent,
+        data: { title: 'samvad-ai.search.title', breadcrumbKey: 'admin.samvad-ai-search' }
       },
       {
         path: 'workflow',

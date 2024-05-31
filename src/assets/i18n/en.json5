@@ -534,6 +534,8 @@
 
   "admin.search.breadcrumbs": "Administrative Search",
 
+  "admin.samvad-ai-search.breadcrumbs": "Samvad-AI",
+
   "admin.search.collection.edit": "Edit",
 
   "admin.search.community.edit": "Edit",
@@ -2881,6 +2883,8 @@
   "menu.section.access_control_people": "People",
 
   "menu.section.admin_search": "Admin Search",
+
+  "menu.section.samvad-ai": "Samvad AI Chatbot",
 
   "menu.section.browse_community": "This Community",
 
