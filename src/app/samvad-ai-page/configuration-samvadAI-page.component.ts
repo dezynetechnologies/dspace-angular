@@ -6,7 +6,7 @@ import { pushInOut } from '../shared/animations/push';
 import { SEARCH_CONFIG_SERVICE } from '../my-dspace-page/my-dspace-page.component';
 //import { SamvadAIConfigurationService } from '../core/shared/samvad-ai/samvad-ai-configuration.service';
 import { RouteService } from '../core/services/route.service';
-//import { SamvadAIService } from '../core/shared/samvad-ai/samvad-ai.service';
+import { SamvadAIService } from '../core/shared/samvad-ai/samvad-ai.service';
 import { Router } from '@angular/router';
 import { APP_CONFIG, AppConfig } from '../../config/app-config.interface';
 
@@ -28,7 +28,7 @@ import { APP_CONFIG, AppConfig } from '../../config/app-config.interface';
 })
 
 export class ConfigurationSamvadAIPageComponent extends SamvadAIComponent {
-  constructor(//protected service: SamvadAIService,
+  constructor(public service: SamvadAIService,
               protected sidebarService: SidebarService,
               protected windowService: HostWindowService,
               //@Inject(SEARCH_CONFIG_SERVICE) public samvadAIConfigService: SamvadAIConfigurationService,
@@ -36,6 +36,6 @@ export class ConfigurationSamvadAIPageComponent extends SamvadAIComponent {
               protected router: Router,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super();
+    super(service);
   }
 }

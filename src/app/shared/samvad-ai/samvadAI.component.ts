@@ -16,8 +16,8 @@ import { RouteService } from '../../core/services/route.service';
 import { SEARCH_CONFIG_SERVICE } from '../../my-dspace-page/my-dspace-page.component';
 import { PaginatedSearchOptions } from './models/paginated-search-options.model';
 import { SearchResult } from './models/search-result.model';
-//import { SamvadAIConfigurationService } from '../../core/shared/samvad-ai/samvad-ai-configuration.service';
-//import { SamvadAIService } from '../../core/shared/samvad-ai/samvad-ai.service';
+import { SamvadAIConfigurationService } from '../../core/shared/samvad-ai/samvad-ai-configuration.service';
+import { SamvadAIService } from '../../core/shared/samvad-ai/samvad-ai.service';
 import { currentPath } from '../utils/route.utils';
 import { Context } from '../../core/shared/context.model';
 import { SortOptions } from '../../core/cache/models/sort-options.model';
@@ -45,7 +45,7 @@ import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
   styleUrls: ['./samvadAI.component.scss'],
   templateUrl: './samvadAI.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [pushInOut],
+  animations: [pushInOut]
 })
 
 /**
@@ -530,8 +530,9 @@ export class SamvadAIComponent{
   // //   return this.service.getSamvadAILink();
   // // }
   
-
-
+  
+  // @Inject(SamvadAIService)protected service:SamvadAIService;
+  constructor(public service: SamvadAIService) {}
   @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('chatBox') chatBoxRef!: ElementRef<HTMLDivElement>;
   selectedFile: File | null = null;
@@ -543,7 +544,8 @@ export class SamvadAIComponent{
     if (userInput.value.trim() !== '') {
       // Create user message
       const userMessage = document.createElement('div');
-      userMessage.className = 'message user-message';
+      userMessage.classList.add("message") 
+      userMessage.classList.add("user-message");
       userMessage.textContent = userInput.value;
       chatBox.appendChild(userMessage);
 
@@ -552,8 +554,8 @@ export class SamvadAIComponent{
 
       // Generate bot response
       const botMessage = document.createElement('div');
-      botMessage.className = 'message bot-message';
-      botMessage.textContent = 'Hello!';
+      botMessage.className = "message bot-message";
+      botMessage.textContent = this.service.chat(userInput.value);
       chatBox.appendChild(botMessage);
 
       // Scroll to the bottom
@@ -593,7 +595,7 @@ export class SamvadAIComponent{
       // Generate bot response
       const botMessage = document.createElement('div');
       botMessage.className = 'message bot-message';
-      botMessage.textContent = 'Hello!';
+      botMessage.textContent = this.service.chat("");
       chatBox.appendChild(botMessage);
     }
   }

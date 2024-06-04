@@ -26,6 +26,9 @@ export enum Context {
   AdminSearch = 'adminSearch',
   AdminWorkflowSearch = 'adminWorkflowSearch',
 
+  /** Administrative search page context */
+  AdminSamvadAI = 'adminSamvadAI',
+
   SideBarSearchModal = 'sideBarSearchModal',
   SideBarSearchModalCurrent = 'sideBarSearchModalCurrent',
 

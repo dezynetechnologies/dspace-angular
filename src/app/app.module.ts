@@ -31,6 +31,7 @@ import { APP_CONFIG, AppConfig } from '../config/app-config.interface';
 import { StoreDevModules } from '../config/store/devtools';
 import { RootModule } from './root.module';
 import { FormsModule } from '@angular/forms';  // Import FormsModule
+import { SamvadAISearchModule } from './admin/samvad-ai-search-page/samvad-ai-search.module';
 
 export function getConfig() {
   return environment;
@@ -63,6 +64,7 @@ const IMPORTS = [
   StoreDevModules,
   EagerThemesModule,
   RootModule,
+  SamvadAISearchModule
 ];
 
 const PROVIDERS = [

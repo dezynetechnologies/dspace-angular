@@ -1,5 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
-import * as annyang from 'annyang';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { Context } from '../../core/shared/context.model';
 
 @Component({
@@ -11,7 +10,7 @@ import { Context } from '../../core/shared/context.model';
 /**
  * Component that represents a search page for administrators
  */
-export class SamvadAISearchPageComponent implements OnInit{
+export class SamvadAISearchPageComponent{
   /**
    * The context of this page
    */
@@ -19,27 +18,6 @@ export class SamvadAISearchPageComponent implements OnInit{
   @ViewChild('chatBox') chatBoxRef!: ElementRef<HTMLDivElement>;
   selectedFile: File | null = null;
 
-  ngOnInit(): void {
-    if (annyang) {
-      // Define voice commands
-      const commands = {
-        'attach': () => {
-          this.onAttachmentClick();
-        },
-        'say *message': (message: string) => {
-          this.sendMessage();
-        }
-        // Add more voice commands as needed
-      };
-
-      // Add commands to annyang
-      annyang.addCommands(commands);
-
-      // Start listening
-      annyang.start();
-    }
-  }
-  
   sendMessage(): void {
     const userInput = this.userInputRef.nativeElement;
     const chatBox = this.chatBoxRef.nativeElement;
@@ -85,7 +63,7 @@ export class SamvadAISearchPageComponent implements OnInit{
       const fileMessage = document.createElement('div');
       fileMessage.className = 'message user-message gpt-message';
       const pdfIcon = document.createElement('img');
-      pdfIcon.src = '../../../assets/images/pdf-icon.png'; // Path to your PDF icon image
+      pdfIcon.src = '../../../assets/images/pdf.png'; // Path to your PDF icon image
       pdfIcon.alt = 'PDF icon';
       pdfIcon.width = 20;
       fileMessage.appendChild(pdfIcon);

@@ -10,9 +10,11 @@ import { CollectionAdminSearchResultGridElementComponent } from './admin-search-
 import { ItemAdminSearchResultActionsComponent } from './admin-search-results/item-admin-search-result-actions.component';
 import { JournalEntitiesModule } from '../../entity-groups/journal-entities/journal-entities.module';
 import { ResearchEntitiesModule } from '../../entity-groups/research-entities/research-entities.module';
-import { SearchModule } from '../../shared/search/search.module';
+//import { SamvadAIModule } from '../../shared/samvad-ai/samvadAI.module';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
+import { SamvadAIPageModule } from '../../samvad-ai-page/samvadAI-page.module';
+import { ThemedSamvadAIPageComponent } from 'src/app/samvad-ai-page/themed-samvadAI-page.component';
 
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
@@ -29,14 +31,16 @@ const ENTRY_COMPONENTS = [
   imports: [
     FormsModule,
     CommonModule, 
-    SearchModule,
     SharedModule.withEntryComponents(),
     JournalEntitiesModule.withEntryComponents(),
-    ResearchEntitiesModule.withEntryComponents()
+    ResearchEntitiesModule.withEntryComponents(),
+    SamvadAIPageModule,
   ],
   declarations: [
     SamvadAISearchPageComponent,
     ...ENTRY_COMPONENTS
+  ],
+  providers:[
   ]
 })
 export class SamvadAISearchModule {
