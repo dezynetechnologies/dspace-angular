@@ -1,10 +1,16 @@
-.chatbot-container {
+.chatbot{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 75px;
+}
+
+.chatbot-container {
+  display: flex;
   height: 100%;
-  width:70%;
-  float:center;
+  width:fit-content;
 }
 
 .chat-container {
@@ -39,16 +45,24 @@
 
 .input-box {
   display: flex;
-  float:center;
   border-top: 1px solid #ddd;
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  max-width: 80%;
+  
 }
 
 .input-buttons {
+  display: flex;
+  width: fit-content;
   margin-right: 10px;
+  float:right;
+  flex-direction: row;
+}
+
+.attachment-box{
+  width: fit-content;
+  margin-left: 10px;
 }
 
 .attachment-button,
@@ -59,12 +73,22 @@
   border: none;
   cursor: pointer;
   outline: none;
-  margin-right: 5px;
+  width: fit-content;
 }
 
 .attachment-button:hover,
 .microphone-button:hover {
   background-color: #0056b3;
+}
+
+.microphone-box{
+  max-width: fit-content;
+  margin-left: 10px;
+}
+
+.inputText{
+  height: 100%;
+  margin-right: 10px;
 }
 
 input[type="text"] {

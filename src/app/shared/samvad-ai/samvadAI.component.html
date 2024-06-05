@@ -1,15 +1,27 @@
-<div class="chatbot-container">
-    <div class="chat-container">
-      <div #chatBox>
-        <div class="message bot-message">Hi! How can I help you today?</div>
-      </div>
-      <div class="input-box">
-        <div class="input-buttons">
-            <button class="attachment-button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
-            <button class="microphone-button" onclick="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
+<div class = "chatbot">
+  <div class="chatbot-container">
+    <form>
+      <div class="chat-container">
+        <div #chatBox>
+          <div class="message bot-message">Hi! How can I help you today?</div>
         </div>
-        <input type="text" #userInput placeholder="Type your message here..." (keypress)="onKeyPress($event)">
-        <button (click)="sendMessage()">Send</button>
+        <div class="input-box">
+          <div class="input-buttons">
+              <div #Attachment class="attachment-box">
+                <input multiple type="file" style = "display: none;">
+                <button class="attachment-button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
+              </div>
+              <div class="microphone-box">
+                <button class="microphone-button" onclick="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
+              </div>  
+          </div>
+          <div #queryBox>
+            <textarea #userInput tabindex="0" class ="inputText" rows="1" placeholder="Type your query here..." (keypress)="onKeyPress($event)">
+            </textarea>
+          </div>
+          <button (click)="sendMessage()">Send</button>
+        </div>
       </div>
-    </div>
+    </form>
+  <div>  
 </div>
