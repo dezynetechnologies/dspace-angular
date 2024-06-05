@@ -39,6 +39,7 @@ import { COLLECTION_MODULE_PATH } from '../../collection-page/collection-page-ro
 import { COMMUNITY_MODULE_PATH } from '../../community-page/community-page-routing-paths';
 import { AppConfig, APP_CONFIG } from '../../../config/app-config.interface';
 import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
+import { response } from 'express';
 
 @Component({
   selector: 'ds-samvad-ai',
@@ -540,7 +541,7 @@ export class SamvadAIComponent{
   sendMessage(): void {
     const userInput = this.userInputRef.nativeElement;
     const chatBox = this.chatBoxRef.nativeElement;
-
+    
     if (userInput.value.trim() !== '') {
       // Create user message
       const userMessage = document.createElement('div');
@@ -555,7 +556,8 @@ export class SamvadAIComponent{
       // Generate bot response
       const botMessage = document.createElement('div');
       botMessage.className = "message bot-message";
-      botMessage.textContent = this.service.chat(userInput.value);
+      
+      this.service.chat(userInput.value).subscribe(response => botMessage.textContent = response.message);
       chatBox.appendChild(botMessage);
 
       // Scroll to the bottom
@@ -595,7 +597,7 @@ export class SamvadAIComponent{
       // Generate bot response
       const botMessage = document.createElement('div');
       botMessage.className = 'message bot-message';
-      botMessage.textContent = this.service.chat("");
+      this.service.chat("").subscribe(response => botMessage.textContent = response.message);
       chatBox.appendChild(botMessage);
     }
   }

@@ -5,7 +5,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { FollowLinkConfig } from '../../../shared/utils/follow-link-config.model';
 import { ResponseParsingService } from '../../data/parsing.service';
 import { RemoteData } from '../../data/remote-data';
-import { GetRequest } from '../../data/request.models';
+import { GetRequest,PostRequest } from '../../data/request.models';
 import { RequestService } from '../../data/request.service';
 import { DSpaceObject } from '../dspace-object.model';
 import { GenericConstructor } from '../generic-constructor';
@@ -33,6 +33,7 @@ import { RestRequest } from '../../data/rest-request.model';
 import { BaseDataService } from '../../data/base/base-data.service';
 import { Angulartics2 } from 'angulartics2';
 import { SamvadAIComponent } from 'src/app/shared/samvad-ai/samvadAI.component';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * A limited data service implementation for the 'discover' endpoint
@@ -60,11 +61,17 @@ import { SamvadAIComponent } from 'src/app/shared/samvad-ai/samvadAI.component';
 /**
  * Service that performs all general actions that have to do with the samvad-ai page
  */
+
+interface DummyResponse {
+  message: string;
+}
+
 @Injectable()
 export class SamvadAIService{
-  constructor(){}
-  chat(value: string): string {
-    return "We are in the service.";
+  constructor(private http: HttpClient) { }
+  private apiUrl = 'http://localhost:8080/server/api/samvad-ai';
+  chat(value: string): Observable<DummyResponse> {
+    return this.http.post<DummyResponse>(this.apiUrl,{});
   }
 }
   // /**
