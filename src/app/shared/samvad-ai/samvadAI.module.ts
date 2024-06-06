@@ -35,6 +35,7 @@ import { NouisliderModule } from 'ng2-nouislider';
 import { ThemedSearchFiltersComponent } from './samvadAI-filters/themed-search-filters.component';
 import { ThemedSearchSidebarComponent } from './samvadAI-sidebar/themed-search-sidebar.component';
 import { SamvadAIService } from 'src/app/core/shared/samvad-ai/samvad-ai.service'; 
+import { FormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   SamvadAIComponent,
@@ -99,6 +100,7 @@ export const MODELS = [
     }),
     SharedModule.withEntryComponents(),
     NouisliderModule,
+    FormsModule
   ],
   providers: [
       SamvadAIService,

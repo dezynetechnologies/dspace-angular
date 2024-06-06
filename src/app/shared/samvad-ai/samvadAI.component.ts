@@ -40,6 +40,8 @@ import { COMMUNITY_MODULE_PATH } from '../../community-page/community-page-routi
 import { AppConfig, APP_CONFIG } from '../../../config/app-config.interface';
 import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import { response } from 'express';
+import { FormsModule } from '@angular/forms';
+import { isNull } from 'lodash';
 
 @Component({
   selector: 'ds-samvad-ai',
@@ -533,35 +535,70 @@ export class SamvadAIComponent{
   
   
   // @Inject(SamvadAIService)protected service:SamvadAIService;
+
+
   constructor(public service: SamvadAIService) {}
   @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('chatBox') chatBoxRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('attachmentDisp') attachDisplay!: ElementRef<HTMLDivElement>;
   selectedFile: File | null = null;
+  fileQuery: string = '';
 
   sendMessage(): void {
     const userInput = this.userInputRef.nativeElement;
     const chatBox = this.chatBoxRef.nativeElement;
-    
-    if (userInput.value.trim() !== '') {
-      // Create user message
-      const userMessage = document.createElement('div');
-      userMessage.classList.add("message") 
-      userMessage.classList.add("user-message");
-      userMessage.textContent = userInput.value;
-      chatBox.appendChild(userMessage);
+    if(!this.selectedFile){
+      if (userInput.value.trim() !== '') {
+        // Create user message
+        const userMessage = document.createElement('div');
+        userMessage.classList.add("message") 
+        userMessage.classList.add("user-message");
+        userMessage.textContent = userInput.value;
+        chatBox.appendChild(userMessage);
 
-      // Clear the input
-      userInput.value = '';
+        // Clear the input
+        userInput.value = '';
 
-      // Generate bot response
-      const botMessage = document.createElement('div');
-      botMessage.className = "message bot-message";
-      
-      this.service.chat(userInput.value).subscribe(response => botMessage.textContent = response.message);
-      chatBox.appendChild(botMessage);
+        // Generate bot response
+        const botMessage = document.createElement('div');
+        botMessage.className = "message bot-message";
+        
+        this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
+        chatBox.appendChild(botMessage);
 
-      // Scroll to the bottom
-      chatBox.scrollTop = chatBox.scrollHeight;
+        // Scroll to the bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+    else{
+      if (userInput.value.trim() !== '') {
+        const userMessage = document.createElement('div');
+        userMessage.classList.add("message") 
+        userMessage.classList.add("user-message");
+        userMessage.textContent = userInput.value;
+        
+        const pdfIcon = document.createElement('img');
+        pdfIcon.src = '../../../assets/images/pdf.png'; // Path to your PDF icon image
+        pdfIcon.alt = 'PDF icon';
+        pdfIcon.width = 20;
+        chatBox.appendChild(pdfIcon);
+        const fileName = document.createElement('span');
+        fileName.textContent = ` ${this.selectedFile.name}`;
+        chatBox.appendChild(fileName);
+        chatBox.appendChild(userMessage);
+
+        // Generate bot response
+        const botMessage = document.createElement('div');
+        botMessage.className = "message bot-message";
+        
+        this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
+        chatBox.appendChild(botMessage);
+        const at = this.attachDisplay.nativeElement;
+        this.selectedFile = null;
+        at.textContent = "";
+        // Scroll to the bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
     }
   }
   
@@ -579,26 +616,23 @@ export class SamvadAIComponent{
   }
 
   displaySelectedFile(): void {
-    const chatBox = this.chatBoxRef.nativeElement;
+    const at = this.attachDisplay.nativeElement;
 
     if (this.selectedFile) {
-      const fileMessage = document.createElement('div');
-      fileMessage.className = 'message user-message gpt-message';
       const pdfIcon = document.createElement('img');
       pdfIcon.src = '../../../assets/images/pdf.png'; // Path to your PDF icon image
       pdfIcon.alt = 'PDF icon';
       pdfIcon.width = 20;
-      fileMessage.appendChild(pdfIcon);
+      at.appendChild(pdfIcon);
       const fileName = document.createElement('span');
       fileName.textContent = ` ${this.selectedFile.name}`;
-      fileMessage.appendChild(fileName);
-      chatBox.appendChild(fileMessage);
-
+      at.appendChild(fileName);
+      
       // Generate bot response
-      const botMessage = document.createElement('div');
-      botMessage.className = 'message bot-message';
-      this.service.chat("").subscribe(response => botMessage.textContent = response.message);
-      chatBox.appendChild(botMessage);
+      // const botMessage = document.createElement('div');
+      // botMessage.className = 'message bot-message';
+      // this.service.uploadFile(this.selectedFile,this.fileQuery).subscribe(response => botMessage.textContent = response.message);
+      // chatBox.appendChild(botMessage);
     }
   }
 

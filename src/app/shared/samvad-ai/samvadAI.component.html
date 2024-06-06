@@ -19,7 +19,9 @@
             <textarea #userInput tabindex="0" class ="inputText" rows="1" placeholder="Type your query here..." (keypress)="onKeyPress($event)">
             </textarea>
           </div>
-          <button (click)="sendMessage()">Send</button>
+          <div #attachmentDisp>
+          </div>
+          <button (click) = "sendMessage()" type="Submit">Send</button>
         </div>
       </div>
     </form>

@@ -70,8 +70,27 @@ interface DummyResponse {
 export class SamvadAIService{
   constructor(private http: HttpClient) { }
   private apiUrl = 'http://localhost:8080/server/api/samvad-ai';
-  chat(value: string): Observable<DummyResponse> {
-    return this.http.post<DummyResponse>(this.apiUrl,{});
+
+  // chat(query: string): Observable<DummyResponse> {
+  //   const formData: FormData = new FormData();
+  //   const file:File = null;
+  //   formData.append('file',file);
+  //   formData.append('query', query);
+  //   return this.http.post<DummyResponse>(this.apiUrl,formData);
+  // }
+
+  uploadFile(fileValue: File, query:string): Observable<DummyResponse> {
+    const formData: FormData = new FormData();
+    if(fileValue){
+      formData.append('file', fileValue, fileValue.name);
+    }
+    else{
+      console.log(fileValue)
+      formData.append('file', new Blob([]), null);
+    }
+    formData.append('query', query);
+    console.log(formData)
+    return this.http.post<DummyResponse>(this.apiUrl,formData);
   }
 }
   // /**
