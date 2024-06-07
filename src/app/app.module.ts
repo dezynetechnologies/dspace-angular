@@ -32,6 +32,7 @@ import { StoreDevModules } from '../config/store/devtools';
 import { RootModule } from './root.module';
 import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { SamvadAISearchModule } from './admin/samvad-ai-search-page/samvad-ai-search.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 export function getConfig() {
   return environment;

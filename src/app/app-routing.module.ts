@@ -67,6 +67,13 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
             canActivate: [EndUserAgreementCurrentUserGuard]
           },
           {
+            path: 'home2',
+            loadChildren: () => import('./home2-page/home2-page.module')
+              .then((m) => m.Home2PageModule),
+            data: { showBreadcrumbs: false },
+            canActivate: [EndUserAgreementCurrentUserGuard]
+          },
+          {
             path: 'community-list',
             loadChildren: () => import('./community-list-page/community-list-page.module')
               .then((m) => m.CommunityListPageModule),
