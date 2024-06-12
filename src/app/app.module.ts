@@ -33,6 +33,7 @@ import { RootModule } from './root.module';
 import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { SamvadAISearchModule } from './admin/samvad-ai-search-page/samvad-ai-search.module';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ChatWidgetComponent } from './chat-widget/chat-widget.component';
 
 export function getConfig() {
   return environment;
@@ -50,6 +51,7 @@ export function getMetaReducers(appConfig: AppConfig): MetaReducer<AppState>[] {
 
 const IMPORTS = [
   CommonModule,
+  ChatWidgetComponent,
   FormsModule,
   SharedModule,
   NavbarModule,
@@ -121,6 +123,7 @@ const EXPORTS = [
 
 @NgModule({
   imports: [
+    ChatWidgetComponent,
     BrowserModule.withServerTransition({ appId: 'dspace-angular' }),
     ...IMPORTS
   ],
@@ -131,6 +134,7 @@ const EXPORTS = [
     ...DECLARATIONS,
   ],
   exports: [
+    ChatWidgetComponent,
     ...EXPORTS,
     ...DECLARATIONS,
   ]

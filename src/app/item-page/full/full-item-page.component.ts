@@ -4,6 +4,7 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { ChatWidgetComponent } from 'src/app/chat-widget/chat-widget.component';
 import { ItemPageComponent } from '../simple/item-page.component';
 import { MetadataMap } from '../../core/shared/metadata.models';
 import { ItemDataService } from '../../core/data/item-data.service';

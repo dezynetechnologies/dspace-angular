@@ -1,0 +1,39 @@
+<div>
+    <div #chatIcon (click) = "showChat()" class="as_chat_icon right maximized">
+        <img src="../../assets/images/chatbot_8943377.png">
+    </div>
+    <div #chatBox class="as_chat_box box-right box-minimized">
+        <header style="background: rgb(184, 222, 179);">
+            
+                <div class="box_header_icon">
+                    <div class="box_header_icon_container">
+                        <img src="../../assets/images/chatbot_8943377.png">
+                    </div>
+                </div>
+
+                <h4 class="as_bot_name">Samvad-AI</h4>
+                
+                <div style="position:absolute; right:15px">
+                    <button (click) = "cancelChat()" style="background: rgb(184, 222, 179); border:none">
+                        <i class="fa fa-close" style="font-size:24px; color: black;"></i>
+                    </button>
+                </div>
+
+        </header>
+
+        <div class="chatArea">
+            <ul #chatList>
+            </ul>
+        </div>
+
+        <div class="sendBox">
+            <form (ngSubmit)="sendClick()">
+                <button class="attachment-button" type = "button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
+                <button class="microphone-button" type="button" (click)="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
+                <input #userInput style = "width: 59%" type="text" name = "query" placeholder="Type your query here...">
+                <button class="sendBotton" type = "button" (click)="sendClick()">Send</button>
+                <div #attachmentDisp></div>
+            </form>
+        </div>
+    </div>
+</div>
