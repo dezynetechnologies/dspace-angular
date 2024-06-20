@@ -29,7 +29,7 @@
         <div class="sendBox">
             <form (ngSubmit)="sendClick()">
                 <button class="attachment-button" type = "button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
-                <button class="microphone-button" type="button" (click)="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
+                <ds-audio-button></ds-audio-button>
                 <input #userInput style = "width: 59%" type="text" name = "query" placeholder="Type your query here...">
                 <button class="sendBotton" type = "button" (click)="sendClick()">Send</button>
                 <div #attachmentDisp></div>

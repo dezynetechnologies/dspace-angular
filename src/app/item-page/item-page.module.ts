@@ -126,7 +126,6 @@ const DECLARATIONS = [
   ],
   declarations: [
     ...DECLARATIONS,
-
   ],
   exports: [
     ...DECLARATIONS,
