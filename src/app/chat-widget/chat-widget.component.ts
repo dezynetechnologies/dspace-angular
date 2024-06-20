@@ -1,4 +1,4 @@
-import { Component,ViewChild,ElementRef, OnInit } from '@angular/core';
+import { Component,ViewChild,ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import { SamvadAIService } from '../core/shared/samvad-ai/samvad-ai.service';
 import { AudioButtonComponent } from '../audio-button/audio-button.component';
 import * as $ from 'jquery';
@@ -10,7 +10,8 @@ import * as moment from 'moment';
   standalone:true,
   templateUrl: './chat-widget.component.html',
   styleUrls: ['./chat-widget.component.scss'],
-  imports: [AudioButtonComponent]
+  imports: [AudioButtonComponent],
+  encapsulation: ViewEncapsulation.None 
 })
 export class ChatWidgetComponent implements OnInit{
   
@@ -39,29 +40,7 @@ export class ChatWidgetComponent implements OnInit{
 
 
     constructor(public service: SamvadAIService) {
-    // this.worker = new Worker(new URL('../worker.js', import.meta.url), {
-    //   type: 'module',
-    // });
-
-    // this.worker.onmessage = (event) => {
-    //   const { type, progress, transcript, error } = event.data;
-    //   if (type === 'modelProgress') {
-    //     this.loadingProgress = progress;
-    //   } else if (type === 'modelLoaded') {
-    //     this.isModelLoading = false;
-    //     console.log('Model loaded successfully');
-    //   } else if (type === 'transcriptionComplete') {
-    //     this.isTranscribing = false;
-    //     this.result = transcript;
-    //     console.log('Transcription complete:', this.result);
-    //   } else if (type === 'error') {
-    //     console.error('Error:', error);
-    //     this.isModelLoading = false;
-    //     this.isTranscribing = false;
-    //   }
-    // };
-
-    //this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    
   }
 
   ngOnInit(): void {
@@ -116,7 +95,8 @@ export class ChatWidgetComponent implements OnInit{
       pdfIcon.width = 20;
       at.appendChild(pdfIcon);
       const fileName = document.createElement('span');
-      fileName.textContent = ` ${this.selectedFile.name}`;
+      fileName.textContent = ` 
+      "webWorkerTsConfig": "tsconfig.worker.json",${this.selectedFile.name}`;
       at.appendChild(fileName);
       
       // Generate bot response
@@ -126,101 +106,6 @@ export class ChatWidgetComponent implements OnInit{
       // chatBox.appendChild(botMessage);
     }
   }
-
-  onMicrophoneClick():void{
-    // if (this.isRecording) {
-    //   this.stopRecording();
-    // } else {
-    //   this.startRecording();
-    // }
-  }
-
-  // startRecording() {
-  //   navigator.mediaDevices.getUserMedia({ audio: true })
-  //     .then(stream => {
-  //       this.mediaRecorder = new MediaRecorder(stream);
-  //       this.audioChunks = []; // Clear previous audio chunks
-  //       this.mediaRecorder.ondataavailable = event => {
-  //         if (event.data.size > 0) {
-  //           this.audioChunks.push(event.data);
-  //         }
-  //       };
-  //       this.mediaRecorder.start();
-  //       this.isRecording = true;
-  //       this.buttonLabel = 'Stop Recording';
-  //     })
-  //     .catch(error => console.error('Error accessing microphone:', error));
-  // }
-
-  // stopRecording() {
-  //   if(this.mediaRecorder){
-  //     this.mediaRecorder.stop();
-  //     this.mediaRecorder.onstop = () => {
-  //       const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
-  //       const reader = new FileReader();
-  //       reader.readAsArrayBuffer(audioBlob);
-  //       reader.onloadend = () => {
-  //         if (reader.result && typeof reader.result !== 'string') {
-  //           console.log(reader.result);
-  //           this.processArrayBuffer(reader.result as ArrayBuffer);
-  //         } else {
-  //           console.error('Error reading audio data');
-  //         }
-  //       };
-  //     };
-  //   }
-  //   this.isRecording = false;
-  //   this.buttonLabel = 'Start Recording';
-  // }
-
-  // async processArrayBuffer(arrayBuffer: ArrayBuffer): Promise<void> {
-  //   const audioCTX = new (window.AudioContext || (window as any).webkitAudioContext)({
-  //     sampleRate: 16000,
-  //   });
-  //   try {
-  //     const audioBuffer = await audioCTX.decodeAudioData(arrayBuffer);
-  //     console.log(audioBuffer.length)
-  //     this.transcribe(audioBuffer);
-  //   } catch (error) {
-  //     console.error('Error decoding audio data:', error);
-  //   }
-  // }
-
-  // async transcribe(audioData: AudioBuffer) {
-  //   this.isBusy = true;
-
-  //   let audio: Float32Array;
-  //   if (audioData.numberOfChannels === 2) {
-  //     const SCALING_FACTOR = Math.sqrt(2);
-
-  //     let left = audioData.getChannelData(0);
-  //     let right = audioData.getChannelData(1);
-
-  //     audio = new Float32Array(audioData.length);
-  //     for (let i = 0; i < audioData.length; ++i) {
-  //       audio[i] = SCALING_FACTOR * (left[i] + right[i]) / 2;
-  //     }
-  //   } else {
-  //     // If the audio is not stereo, we can just use the first channel:
-  //     audio = audioData.getChannelData(0);
-  //     console.log(audio);
-  //   }
-
-  //   this.worker.postMessage({
-  //     model: 'Xenova/whisper-tiny',
-  //     multilingual: false,
-  //     quantized: false,
-  //     subtask: 'transcribe',
-  //     language: 'english',
-  //     audio: audio,
-  //   });
-
-  //   if(this.result){
-  //     const userInput = this.userInputRef.nativeElement;
-  //     userInput.textContent = this.result;
-  //     this.result = null;
-  //   }
-  // }
 
   sendClick():void{
     const chatList = this.chatListRef.nativeElement;
