@@ -95,8 +95,7 @@ export class ChatWidgetComponent implements OnInit{
       pdfIcon.width = 20;
       at.appendChild(pdfIcon);
       const fileName = document.createElement('span');
-      fileName.textContent = ` 
-      "webWorkerTsConfig": "tsconfig.worker.json",${this.selectedFile.name}`;
+      fileName.textContent = `${this.selectedFile.name}`;
       at.appendChild(fileName);
       
       // Generate bot response
