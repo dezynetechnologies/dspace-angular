@@ -124,7 +124,7 @@ const EXPORTS = [
 @NgModule({
   imports: [
     ChatWidgetComponent,
-    AudioButtonComponent,
+  AudioButtonComponent,
     BrowserModule.withServerTransition({ appId: 'dspace-angular' }),
     ...IMPORTS
   ],

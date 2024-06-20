@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./out-tsc/worker",
+      "target": "es6",
+      "module": "esnext",
+      "lib": ["es6", "dom"],
+      "types": []
+    },
+    "include": [
+      "src/assets/worker.js"
+    ]
+  }

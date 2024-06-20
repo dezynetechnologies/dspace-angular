@@ -40,8 +40,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/assets",
-              "src/robots.txt"
+              "src/assets"
             ],
             "styles": [
               "src/styles/startup.scss",
@@ -61,7 +60,7 @@
                 "bundleName": "dspace-theme"
               }
             ],
-            "scripts": [],
+            "scripts": ["src/assets/worker.js"],
             "baseHref": "/"
           },
           "configurations": {
@@ -142,7 +141,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "sourceMap": {
-              "scripts": false,
+              "scripts": true,
               "styles": false,
               "hidden": false,
               "vendor": false
@@ -157,7 +156,7 @@
                 "bundleName": "base-theme"
               }
             ],
-            "scripts": []
+            "scripts": ["src/assets/worker.js"]
           },
           "configurations": {
             "test": {
