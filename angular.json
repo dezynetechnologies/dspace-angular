@@ -56,11 +56,18 @@
               },
               {
                 "input": "src/themes/dspace/styles/theme.scss",
-                "inject": false,
+                "inject": true,
                 "bundleName": "dspace-theme"
+              },
+              {
+                "input": "src/themes/MyThemes/styles/theme.scss",
+                "inject": true,
+                "bundleName": "MyThemes-theme"
               }
             ],
-            "scripts": ["src/assets/worker.js"],
+            "scripts": [
+              "src/assets/worker.js"
+            ],
             "baseHref": "/"
           },
           "configurations": {
@@ -156,7 +163,9 @@
                 "bundleName": "base-theme"
               }
             ],
-            "scripts": ["src/assets/worker.js"]
+            "scripts": [
+              "src/assets/worker.js"
+            ]
           },
           "configurations": {
             "test": {
