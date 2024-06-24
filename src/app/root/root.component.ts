@@ -39,11 +39,12 @@ export class RootComponent implements OnInit {
   @Input() shouldShowRouteLoader: boolean;
 
   constructor(
-    private router: Router,
+    public router: Router,
     private cssService: CSSVariableService,
     private menuService: MenuService,
     private windowService: HostWindowService
   ) {
+    console.log(this.router.url);
     this.notificationOptions = environment.notifications;
   }
 
@@ -69,6 +70,10 @@ export class RootComponent implements OnInit {
     if (this.router.url === getPageInternalServerErrorRoute()) {
       this.shouldShowRouteLoader = false;
     }
+  }
+
+  shouldShowHeader(): boolean {
+    return this.router.url !== '/home2';
   }
 
   skipToMainContent() {

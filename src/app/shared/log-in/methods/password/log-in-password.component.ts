@@ -152,7 +152,7 @@ export class LogInPasswordComponent implements OnInit {
     password.trim();
 
     if (!this.isStandalonePage) {
-      this.authService.setRedirectUrl('/mydspace?configuration=workspace');
+      this.authService.setRedirectUrl('/myDashboard');
     } else {
       this.authService.setRedirectUrlIfNotSet('/');
     }

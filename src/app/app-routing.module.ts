@@ -40,6 +40,7 @@ import {
 import { ServerCheckGuard } from './core/server-check/server-check.guard';
 import { MenuResolver } from './menu.resolver';
 import { ThemedPageErrorComponent } from './page-error/themed-page-error.component';
+import { MyDashboardComponent } from 'src/themes/MyThemes/app/my-dashboard/my-dashboard.component';
 
 @NgModule({
   imports: [
@@ -72,6 +73,11 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
               .then((m) => m.Home2PageModule),
             data: { showBreadcrumbs: false },
             canActivate: [EndUserAgreementCurrentUserGuard]
+          },
+          {
+            path: 'myDashboard',
+            component: MyDashboardComponent,
+            pathMatch: 'full'
           },
           {
             path: 'community-list',
