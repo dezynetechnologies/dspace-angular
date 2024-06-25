@@ -554,6 +554,7 @@ export class SamvadAIComponent{
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
         userMessage.textContent = userInput.value;
+        userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
         chatBox.appendChild(userMessage);
 
         // Clear the input
@@ -562,6 +563,7 @@ export class SamvadAIComponent{
         // Generate bot response
         const botMessage = document.createElement('div');
         botMessage.className = "message bot-message";
+        botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
         
         this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
         chatBox.appendChild(botMessage);
@@ -575,27 +577,35 @@ export class SamvadAIComponent{
         const userMessage = document.createElement('div');
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
+        userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
         userMessage.textContent = userInput.value;
         
+        const containerDiv = document.createElement('div');
         const pdfIcon = document.createElement('img');
         pdfIcon.src = '../../../assets/images/pdf.png'; // Path to your PDF icon image
         pdfIcon.alt = 'PDF icon';
         pdfIcon.width = 20;
-        chatBox.appendChild(pdfIcon);
+        containerDiv.classList.add("right");
+        containerDiv.appendChild(pdfIcon);
         const fileName = document.createElement('span');
         fileName.textContent = ` ${this.selectedFile.name}`;
-        chatBox.appendChild(fileName);
+        containerDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        containerDiv.appendChild(fileName);
+        chatBox.appendChild(containerDiv);
         chatBox.appendChild(userMessage);
 
         // Generate bot response
         const botMessage = document.createElement('div');
         botMessage.className = "message bot-message";
+        botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
         
         this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
         chatBox.appendChild(botMessage);
         const at = this.attachDisplay.nativeElement;
         this.selectedFile = null;
         at.textContent = "";
+        // Clear the input
+        userInput.value = '';
         // Scroll to the bottom
         chatBox.scrollTop = chatBox.scrollHeight;
       }

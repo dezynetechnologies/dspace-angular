@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+export const MYDASHBOARD_ROUTE = '/myDashboard';
 @Component({
   selector: 'ds-my-dashboard',
   standalone:true,
@@ -9,18 +11,32 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./my-dashboard.component.scss'],
   imports: [SharedModule]
 })
+
 export class MyDashboardComponent {
   showSubmit: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef, public router:Router) {}
+
+  ngOnInit(): void {
+    if (!this.authService.isAuthenticated()) {
+      console.log(this.authService.isAuthenticated());
+      this.router.navigate(['/home2']);
+    } 
+  }
+
+  constructor(private cdr: ChangeDetectorRef, public router:Router, public authService: AuthService) {
+    
+  }
 
   Search(){
-    this.router.navigate(['/search']);
+    this.router.navigate(['/admin/search']);
   }
-  Manage(){}
-  Browse(){}
+  Browse(){
+    this.router.navigate(['/community-list']);
+  }
+  SamvadAISearch(){
+    this.router.navigate(['/admin/samvad-ai']);
+  }
   Submit() {
-    // this.showSubmit = true;
-    // console.log(this.showSubmit);
+    this.router.navigate(['/mydspace?configuration=workspace']);
   }
 }

@@ -15,7 +15,7 @@
                 <button class="microphone-button" onclick="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
               </div>  
           </div>
-          <div #queryBox>
+          <div #queryBox class="queryDiv">
             <textarea #userInput tabindex="0" class ="inputText" rows="1" placeholder="Type your query here..." (keypress)="onKeyPress($event)">
             </textarea>
           </div>

@@ -53,7 +53,7 @@ import { MyDashboardComponent } from 'src/themes/MyThemes/app/my-dashboard/my-da
         canActivateChild: [ServerCheckGuard],
         resolve: [MenuResolver],
         children: [
-          { path: '', redirectTo: '/home', pathMatch: 'full' },
+          { path: '', redirectTo: '/home2', pathMatch: 'full' },
           {
             path: 'reload/:rnd',
             component: ThemedPageNotFoundComponent,

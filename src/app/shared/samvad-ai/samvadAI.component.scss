@@ -10,14 +10,19 @@
 .chatbot-container {
   display: flex;
   height: 100%;
-  width:fit-content;
+  width:60%;
+  justify-content: center;
+}
+
+form{
+  width:100%;
 }
 
 .chat-container {
   width: 100%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 35px;
   overflow: hidden;
   display: flex;
   float: right;
@@ -28,19 +33,21 @@
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  max-width: 80%;
+  max-width: 88%;
 }
 
 .user-message {
   background-color: #e1ffc7;
   align-self: flex-end;
-  align-content: left;
-  text-align: left;
+  align-content: right;
+  text-align: right;
 }
 
 .bot-message {
   background-color: #f1f1f1;
   align-self: flex-start;
+  align-content: left;
+  text-align: left;
 }
 
 .input-box {
@@ -49,7 +56,7 @@
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  
+  width:100%;
 }
 
 .input-buttons {
@@ -60,9 +67,23 @@
   flex-direction: row;
 }
 
+.queryDiv{
+  width:80%;
+  margin-right:10px;
+}
+
 .attachment-box{
   width: fit-content;
   margin-left: 10px;
+  align-content: right;
+  text-align: right;
+}
+
+.right{
+  align-self: flex-start;
+  align-content: right;
+  text-align: right;
+  width:88%
 }
 
 .attachment-button,
@@ -71,24 +92,22 @@
   background-color: #007bff;
   color: white;
   border: none;
+  border-radius: 50%;
   cursor: pointer;
   outline: none;
   width: fit-content;
 }
 
-.attachment-button:hover,
-.microphone-button:hover {
-  background-color: #0056b3;
-}
-
 .microphone-box{
   max-width: fit-content;
   margin-left: 10px;
+  width:80%;
 }
 
 .inputText{
   height: 100%;
   margin-right: 10px;
+  width:100%;
 }
 
 input[type="text"] {
