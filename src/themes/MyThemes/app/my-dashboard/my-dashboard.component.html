@@ -1,8 +1,11 @@
 <!-- <ds-create-item-parent-selector></ds-create-item-parent-selector> -->
-<div class="grid-container">
-    <div class="card" (click) = "Search()">Normal Search</div>
-    <div class="card" (click) = "Browse()">Browse the repository</div>
-    <div class="card" (click) = "SamvadAISearch()">AI Search</div>
-    <div class="card" (click) = "Submit()">Submit to the repository</div>
-  </div>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="grid-container" style="overflow-y: auto; position:absolute; top: 50%; margin-top: -25px; transform: translate(0, -50%);">
+  <div class="card" (click) = "Search()"><i class="fa fa-search" style="font-size:36px"></i><br>Normal Search</div>
+  <div class="card" (click) = "Browse()"><i class="fa fa-folder-open-o" style="font-size:36px"></i><br>Browse the repository</div>
+  <div class="card" (click) = "SamvadAISearch()"><i class="fa fa-search" style="font-size:36px"></i><br>AI Search</div>
+  <div class="card" (click) = "Submit()"><i class='fas fa-upload' style='font-size:36px'></i><br>Submit to the repository</div>
+</div>
   

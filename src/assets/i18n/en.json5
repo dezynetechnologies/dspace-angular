@@ -3032,6 +3032,8 @@
 
   "mydspace.breadcrumbs": "MyDSpace",
 
+  "mydashboard.breadcrumbs": "MyDashboard",
+
   "mydspace.description": "",
 
   "mydspace.messages.controller-help": "Select this option to send a message to item's submitter.",
@@ -3113,6 +3115,8 @@
   "mydspace.upload.upload-multiple-successful": "{{qty}} new workspace items created.",
 
   "mydspace.view-btn": "View",
+
+  "mydashboard.title": "MyDashboard",
 
   "nav.expandable-navbar-section-suffix": "(submenu)",
 

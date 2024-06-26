@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgModule } from '@angular/core';
 
 export const MYDASHBOARD_ROUTE = '/myDashboard';
 @Component({
@@ -9,7 +10,7 @@ export const MYDASHBOARD_ROUTE = '/myDashboard';
   standalone:true,
   templateUrl: './my-dashboard.component.html',
   styleUrls: ['./my-dashboard.component.scss'],
-  imports: [SharedModule]
+  imports: [SharedModule, RouterModule]
 })
 
 export class MyDashboardComponent {
@@ -37,6 +38,6 @@ export class MyDashboardComponent {
     this.router.navigate(['/admin/samvad-ai']);
   }
   Submit() {
-    this.router.navigate(['/mydspace?configuration=workspace']);
+    this.router.navigate(['/mydspace']);
   }
 }

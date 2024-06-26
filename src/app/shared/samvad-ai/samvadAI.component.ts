@@ -550,23 +550,50 @@ export class SamvadAIComponent{
     if(!this.selectedFile){
       if (userInput.value.trim() !== '') {
         // Create user message
+        // const userMessage = document.createElement('div');
+        // userMessage.classList.add("message") 
+        // userMessage.classList.add("user-message");
+        // userMessage.textContent = userInput.value;
+        // userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        // chatBox.appendChild(userMessage);
+
+        const userDiv = document.createElement('div');
         const userMessage = document.createElement('div');
+        const userIcon = document.createElement('i');
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
-        userMessage.textContent = userInput.value;
         userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
-        chatBox.appendChild(userMessage);
+        userIcon.classList.add("fa-solid");
+        userIcon.classList.add("fa-person");
+        userIcon.classList.add("center");
+        userIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userDiv.classList.add("userDiv");
+        userMessage.textContent = userInput.value;
+        userDiv.appendChild(userMessage);  
+        userDiv.appendChild(userIcon);
+        chatBox.appendChild(userDiv);
 
         // Clear the input
         userInput.value = '';
 
         // Generate bot response
         const botMessage = document.createElement('div');
+        const botDiv = document.createElement('div');
+        const botIcon = document.createElement('i');
         botMessage.className = "message bot-message";
         botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botDiv.classList.add("botDiv");
+        botIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botIcon.classList.add("fa-solid");
+        botIcon.classList.add("fa-robot");
+        botIcon.classList.add("center");
+        botDiv.appendChild(botIcon);
+        botDiv.appendChild(botMessage);
         
         this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
-        chatBox.appendChild(botMessage);
+        chatBox.appendChild(botDiv);
 
         // Scroll to the bottom
         chatBox.scrollTop = chatBox.scrollHeight;
@@ -574,11 +601,21 @@ export class SamvadAIComponent{
     }
     else{
       if (userInput.value.trim() !== '') {
+        const userDiv = document.createElement('div');
         const userMessage = document.createElement('div');
+        const userIcon = document.createElement('i');
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
         userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userIcon.classList.add("fa-solid");
+        userIcon.classList.add("fa-person");
+        userIcon.classList.add("center");
+        userIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userDiv.classList.add("userDiv");
         userMessage.textContent = userInput.value;
+        userDiv.appendChild(userMessage);  
+        userDiv.appendChild(userIcon);
         
         const containerDiv = document.createElement('div');
         const pdfIcon = document.createElement('img');
@@ -592,15 +629,25 @@ export class SamvadAIComponent{
         containerDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
         containerDiv.appendChild(fileName);
         chatBox.appendChild(containerDiv);
-        chatBox.appendChild(userMessage);
+        chatBox.appendChild(userDiv);
 
         // Generate bot response
         const botMessage = document.createElement('div');
+        const botDiv = document.createElement('div');
+        const botIcon = document.createElement('i');
         botMessage.className = "message bot-message";
         botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botDiv.classList.add("botDiv");
+        botIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botIcon.classList.add("fa-solid");
+        botIcon.classList.add("fa-robot");
+        botIcon.classList.add("center");
+        botDiv.appendChild(botIcon);
+        botDiv.appendChild(botMessage);
         
         this.service.uploadFile(this.selectedFile,userInput.value).subscribe(response => botMessage.textContent = response.message);
-        chatBox.appendChild(botMessage);
+        chatBox.appendChild(botDiv);
         const at = this.attachDisplay.nativeElement;
         this.selectedFile = null;
         at.textContent = "";

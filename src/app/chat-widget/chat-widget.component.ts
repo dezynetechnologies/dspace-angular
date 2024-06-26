@@ -123,7 +123,7 @@ export class ChatWidgetComponent implements OnInit{
         userDiv.classList.add("userDiv");
         userIcon.classList.add("fa-solid");
         userIcon.classList.add("fa-person");
-        userIcon.classList.add("center")
+        userIcon.classList.add("center");
         userSpan.textContent = userInput.value;
         userSpan.classList.add("humanMessage");
         userDiv.appendChild(userIcon);

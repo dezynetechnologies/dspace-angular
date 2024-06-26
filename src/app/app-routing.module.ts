@@ -41,6 +41,7 @@ import { ServerCheckGuard } from './core/server-check/server-check.guard';
 import { MenuResolver } from './menu.resolver';
 import { ThemedPageErrorComponent } from './page-error/themed-page-error.component';
 import { MyDashboardComponent } from 'src/themes/MyThemes/app/my-dashboard/my-dashboard.component';
+import { I18nBreadcrumbResolver } from './core/breadcrumbs/i18n-breadcrumb.resolver';
 
 @NgModule({
   imports: [
@@ -77,7 +78,11 @@ import { MyDashboardComponent } from 'src/themes/MyThemes/app/my-dashboard/my-da
           {
             path: 'myDashboard',
             component: MyDashboardComponent,
-            pathMatch: 'full'
+            pathMatch: 'full',
+            resolve: {
+              breadcrumb: I18nBreadcrumbResolver
+            },
+            data: { title: 'mydashboard.title', breadcrumbKey: 'mydashboard' },
           },
           {
             path: 'community-list',
