@@ -19,7 +19,6 @@ export class MyDashboardComponent {
 
   ngOnInit(): void {
     if (!this.authService.isAuthenticated()) {
-      console.log(this.authService.isAuthenticated());
       this.router.navigate(['/home2']);
     } 
   }

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, EventEmitter, Inject, Input, Output, OnDestroy } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
-import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, take } from 'rxjs/operators';
 import uniqueId from 'lodash/uniqueId';
 
 import { PaginatedList } from '../../core/data/paginated-list.model';
@@ -42,6 +42,12 @@ import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import { response } from 'express';
 import { FormsModule } from '@angular/forms';
 import { isNull } from 'lodash';
+import { CommunityListDatasource } from 'src/app/community-list-page/community-list-datasource';
+import { CommunityListService } from 'src/app/community-list-page/community-list-service';
+import { FindListOptions } from 'src/app/core/data/find-list-options.model';
+import { SortDirection } from '../../core/cache/models/sort-options.model';
+import { FlatNode } from 'src/app/community-list-page/flat-node.model';
+import { CollectionViewer } from '@angular/cdk/collections';
 
 @Component({
   selector: 'ds-samvad-ai',
@@ -533,16 +539,39 @@ export class SamvadAIComponent{
   // //   return this.service.getSamvadAILink();
   // // }
   
-  
-  // @Inject(SamvadAIService)protected service:SamvadAIService;
 
 
-  constructor(public service: SamvadAIService) {}
+  constructor(public service: SamvadAIService,
+    protected communityListService: CommunityListService) {
+    //this.dataSource = new CommunityListDatasource(this.communityListService);
+    //this.paginationConfig = new FindListOptions();
+    //this.paginationConfig.elementsPerPage = 2;
+    //this.paginationConfig.currentPage = 1;
+    //this.paginationConfig.sort = new SortOptions('dc.title', SortDirection.ASC);
+
+    //this.communityListService.getLoadingNodeFromStore().pipe(take(1)).subscribe((result) => {
+    //  this.loadingNode = result;
+    //});
+    //this.communityListService.getExpandedNodesFromStore().pipe(take(1)).subscribe((result) => {
+    //  this.expandedNodes = [...result];
+    //  this.dataSource.loadCommunities(this.paginationConfig, this.expandedNodes);
+      // Mock CollectionViewer
+    //const mockCollectionViewer: CollectionViewer = {
+    //  viewChange: of({ start: 0, end: 0 })
+    //};
+    //  this.dataSource.connect(mockCollectionViewer).subscribe((response) => {
+    //  });
+    //});
+  }
   @ViewChild('userInput') userInputRef!: ElementRef<HTMLInputElement>;
   @ViewChild('chatBox') chatBoxRef!: ElementRef<HTMLDivElement>;
   @ViewChild('attachmentDisp') attachDisplay!: ElementRef<HTMLDivElement>;
   selectedFile: File | null = null;
   fileQuery: string = '';
+  //dataSource: CommunityListDatasource;
+  //paginationConfig: FindListOptions;
+  //private expandedNodes: FlatNode[] = [];
+  //public loadingNode: FlatNode;
 
   sendMessage(): void {
     const userInput = this.userInputRef.nativeElement;
@@ -562,12 +591,12 @@ export class SamvadAIComponent{
         const userIcon = document.createElement('i');
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
-        userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userMessage.setAttribute('_ngcontent-dspace-angular-c490', '');
         userIcon.classList.add("fa-solid");
         userIcon.classList.add("fa-person");
         userIcon.classList.add("center");
-        userIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
-        userDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userIcon.setAttribute('_ngcontent-dspace-angular-c490', '');
+        userDiv.setAttribute('_ngcontent-dspace-angular-c490', '');
         userDiv.classList.add("userDiv");
         userMessage.textContent = userInput.value;
         userDiv.appendChild(userMessage);  
@@ -582,10 +611,10 @@ export class SamvadAIComponent{
         const botDiv = document.createElement('div');
         const botIcon = document.createElement('i');
         botMessage.className = "message bot-message";
-        botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
-        botDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botMessage.setAttribute('_ngcontent-dspace-angular-c490', '');
+        botDiv.setAttribute('_ngcontent-dspace-angular-c490', '');
         botDiv.classList.add("botDiv");
-        botIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botIcon.setAttribute('_ngcontent-dspace-angular-c490', '');
         botIcon.classList.add("fa-solid");
         botIcon.classList.add("fa-robot");
         botIcon.classList.add("center");
@@ -606,12 +635,12 @@ export class SamvadAIComponent{
         const userIcon = document.createElement('i');
         userMessage.classList.add("message") 
         userMessage.classList.add("user-message");
-        userMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userMessage.setAttribute('_ngcontent-dspace-angular-c490', '');
         userIcon.classList.add("fa-solid");
         userIcon.classList.add("fa-person");
         userIcon.classList.add("center");
-        userIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
-        userDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        userIcon.setAttribute('_ngcontent-dspace-angular-c490', '');
+        userDiv.setAttribute('_ngcontent-dspace-angular-c490', '');
         userDiv.classList.add("userDiv");
         userMessage.textContent = userInput.value;
         userDiv.appendChild(userMessage);  
@@ -626,7 +655,7 @@ export class SamvadAIComponent{
         containerDiv.appendChild(pdfIcon);
         const fileName = document.createElement('span');
         fileName.textContent = ` ${this.selectedFile.name}`;
-        containerDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        containerDiv.setAttribute('_ngcontent-dspace-angular-c490', '');
         containerDiv.appendChild(fileName);
         chatBox.appendChild(containerDiv);
         chatBox.appendChild(userDiv);
@@ -636,10 +665,10 @@ export class SamvadAIComponent{
         const botDiv = document.createElement('div');
         const botIcon = document.createElement('i');
         botMessage.className = "message bot-message";
-        botMessage.setAttribute('_ngcontent-dspace-angular-c489', '');
-        botDiv.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botMessage.setAttribute('_ngcontent-dspace-angular-c490', '');
+        botDiv.setAttribute('_ngcontent-dspace-angular-c490', '');
         botDiv.classList.add("botDiv");
-        botIcon.setAttribute('_ngcontent-dspace-angular-c489', '');
+        botIcon.setAttribute('_ngcontent-dspace-angular-c490', '');
         botIcon.classList.add("fa-solid");
         botIcon.classList.add("fa-robot");
         botIcon.classList.add("center");

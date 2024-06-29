@@ -30,7 +30,6 @@ export class Home2PageComponent implements OnInit {
       b = res;
     });
     if(b){
-      console.log("We are inside home2 authenticate");
       this.router.navigate(['/myDashboard']);
     }
     this.site$ = this.route.data.pipe(

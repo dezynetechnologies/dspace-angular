@@ -85,11 +85,9 @@ export class SamvadAIService{
       formData.append('file', fileValue, fileValue.name);
     }
     else{
-      console.log(fileValue)
       formData.append('file', new Blob([]), null);
     }
     formData.append('query', query);
-    console.log(formData)
     return this.http.post<DummyResponse>(this.apiUrl,formData);
   }
 }

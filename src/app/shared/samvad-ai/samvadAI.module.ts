@@ -36,6 +36,9 @@ import { ThemedSearchFiltersComponent } from './samvadAI-filters/themed-search-f
 import { ThemedSearchSidebarComponent } from './samvadAI-sidebar/themed-search-sidebar.component';
 import { SamvadAIService } from 'src/app/core/shared/samvad-ai/samvad-ai.service'; 
 import { FormsModule } from '@angular/forms';
+import { CommunityListService } from 'src/app/community-list-page/community-list-service';
+import { CommunityDropdownComponent } from 'src/themes/MyThemes/app/community-dropdown/community-dropdown.component';
+import { CommunityListPageModule } from 'src/app/community-list-page/community-list-page.module';
 
 const COMPONENTS = [
   SamvadAIComponent,
@@ -64,6 +67,7 @@ const COMPONENTS = [
   ThemedSearchSettingsComponent,
   ThemedSearchFiltersComponent,
   ThemedSearchSidebarComponent,
+  CommunityDropdownComponent
 ];
 
 const ENTRY_COMPONENTS = [
@@ -75,7 +79,7 @@ const ENTRY_COMPONENTS = [
   SearchFacetOptionComponent,
   SearchFacetSelectedOptionComponent,
   SearchFacetRangeOptionComponent,
-  SearchAuthorityFilterComponent,
+  SearchAuthorityFilterComponent
 ];
 
 /**
@@ -100,10 +104,12 @@ export const MODELS = [
     }),
     SharedModule.withEntryComponents(),
     NouisliderModule,
-    FormsModule
+    FormsModule,
+    CommunityListPageModule
   ],
   providers: [
       SamvadAIService,
+      CommunityListService
     ],
   exports: [
     ...COMPONENTS

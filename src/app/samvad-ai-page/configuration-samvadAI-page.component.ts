@@ -9,6 +9,7 @@ import { RouteService } from '../core/services/route.service';
 import { SamvadAIService } from '../core/shared/samvad-ai/samvad-ai.service';
 import { Router } from '@angular/router';
 import { APP_CONFIG, AppConfig } from '../../config/app-config.interface';
+import { CommunityListService } from '../community-list-page/community-list-service';
 
 /**
  * This component renders a samvad AI page using a configuration as input.
@@ -29,6 +30,7 @@ import { APP_CONFIG, AppConfig } from '../../config/app-config.interface';
 
 export class ConfigurationSamvadAIPageComponent extends SamvadAIComponent {
   constructor(public service: SamvadAIService,
+              public communityService: CommunityListService,
               protected sidebarService: SidebarService,
               protected windowService: HostWindowService,
               //@Inject(SEARCH_CONFIG_SERVICE) public samvadAIConfigService: SamvadAIConfigurationService,
@@ -36,6 +38,6 @@ export class ConfigurationSamvadAIPageComponent extends SamvadAIComponent {
               protected router: Router,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super(service);
+    super(service, communityService);
   }
 }
