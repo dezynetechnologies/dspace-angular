@@ -1,0 +1,165 @@
+.chatbot{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 75px;
+  }
+  
+  .chatbot-container {
+    display: flex;
+    height: 100%;
+    width:60%;
+    justify-content: center;
+  }
+  
+  form{
+    width:100%;
+  }
+  
+  textarea{
+    resize:none;
+    outline:none;
+    border-radius: 28px;
+    padding-right: 10px;
+    overflow-y: hidden;
+  }
+  
+  .chat-container {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    float: right;
+    flex-direction: column;
+  }
+  
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 88%;
+  }
+  
+  .previousChats{
+    display: flex;
+    flex-direction: column; /* Align children vertically */
+    align-items: center;
+    overflow-y: auto;
+    margin-bottom: 100px;
+  }
+  
+  .user-message {
+    background-color: #e1ffc7;
+    align-content: right;
+    text-align: right;
+    width:60%;
+  }
+  
+  .bot-message {
+    background-color: #f1f1f1;
+    align-content: left;
+    text-align: left;
+    width:60%;
+  }
+  
+  .input-box {
+    display: flex;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    width:100%;
+  }
+  
+  .input-buttons {
+    display: flex;
+    width: fit-content;
+    margin-right: 10px;
+    float:right;
+    flex-direction: row;
+  }
+  
+  .queryDiv{
+    width:80%;
+    margin-right:10px;
+  }
+  
+  .attachment-box{
+    width: fit-content;
+    margin-left: 10px;
+    align-content: right;
+    text-align: right;
+  }
+  
+  .right{
+    align-content: right;
+    text-align: right;
+    width:60%;
+  }
+  
+  .attachment-button,
+  .microphone-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    width: fit-content;
+  }
+  
+  .microphone-box{
+    max-width: fit-content;
+    margin-left: 10px;
+    width:80%;
+  }
+  
+  .inputText{
+    height: 100%;
+    margin-right: 10px;
+    width:100%;
+  }
+  
+  input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .center{
+    display:flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .userDiv{
+    width: 60%;
+    display:flex;
+    justify-content: right;
+  }
+  
+  .botDiv{
+    width: 60%;
+    display:flex;
+    justify-content: left;
+  }

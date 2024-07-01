@@ -38,6 +38,6 @@ export class ConfigurationSamvadAIPageComponent extends SamvadAIComponent {
               protected router: Router,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super(service, communityService);
+    super(service);
   }
 }

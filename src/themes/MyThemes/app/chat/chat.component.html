@@ -1,0 +1,37 @@
+<div #chatBox class = "previousChats">
+    <div class="botDiv">
+      <i class="fa-solid fa-robot center"></i>
+      <div class="message bot-message">Hi! How can I help you today?</div>
+    </div>
+  </div>
+  <div class = "chatbot" style = "width:77%">
+    <div class="chatbot-container">
+      <form>
+        <div class="chat-container">
+          <div class="input-box">
+            <div class="input-buttons">
+                <div #Attachment class="attachment-box">
+                  <input multiple type="file" style = "display: none;">
+                  <button class="attachment-button" (click)="onAttachmentClick()"><i class="fas fa-paperclip"></i></button>
+                </div>
+                <div class="microphone-box">
+                  <button class="microphone-button" onclick="onMicrophoneClick()"><i class="fas fa-microphone"></i></button>
+                </div>  
+            </div>
+            <div #queryBox class="queryDiv">
+              <textarea #userInput tabindex="0" class ="inputText" rows="1" placeholder="Type your query here..." (keypress)="onKeyPress($event)">
+              </textarea>
+            </div>
+            <div #attachmentDisp>
+            </div>
+            <button (click) = "sendMessage()" type="Submit" style = "background: none; color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;"><i class="fa fa-arrow-circle-up" style="font-size:40px;color:#007bff"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { CommunityListService } from 'src/app/community-list-page/community-list-service';
 import { CommunityListDatasource } from 'src/app/community-list-page/community-list-datasource';
 import { FindListOptions } from 'src/app/core/data/find-list-options.model';
@@ -22,6 +22,8 @@ export class CommunityDropdownComponent implements OnInit, OnDestroy{
 
   private expandedNodes: FlatNode[] = [];
   public loadingNode: FlatNode;
+
+  @Output() newItemEvent = new EventEmitter<FlatNode>();
 
   treeControl = new FlatTreeControl<FlatNode>(
     (node: FlatNode) => node.level, (node: FlatNode) => true
@@ -127,11 +129,12 @@ export class CommunityDropdownComponent implements OnInit, OnDestroy{
     if (this.isToggled[nodeId]) {
       this.renderer.removeStyle(element, 'background-color');
     } else {
-      this.renderer.setStyle(element, 'background-color', 'cyan');
+      this.renderer.setStyle(element, 'background-color', "cyan");
     }
 
     this.isToggled[nodeId] = !this.isToggled[nodeId];
 
+    this.newItemEvent.emit(node);
     console.log(node);
   }
 

@@ -39,6 +39,8 @@ import { FormsModule } from '@angular/forms';
 import { CommunityListService } from 'src/app/community-list-page/community-list-service';
 import { CommunityDropdownComponent } from 'src/themes/MyThemes/app/community-dropdown/community-dropdown.component';
 import { CommunityListPageModule } from 'src/app/community-list-page/community-list-page.module';
+import { ChatComponent } from 'src/themes/MyThemes/app/chat/chat.component';
+import { ShowSelectedCollectionComponent } from 'src/themes/MyThemes/app/show-selected-collection/show-selected-collection.component';
 
 const COMPONENTS = [
   SamvadAIComponent,
@@ -67,7 +69,9 @@ const COMPONENTS = [
   ThemedSearchSettingsComponent,
   ThemedSearchFiltersComponent,
   ThemedSearchSidebarComponent,
-  CommunityDropdownComponent
+  CommunityDropdownComponent,
+  ChatComponent,
+  ShowSelectedCollectionComponent,
 ];
 
 const ENTRY_COMPONENTS = [
