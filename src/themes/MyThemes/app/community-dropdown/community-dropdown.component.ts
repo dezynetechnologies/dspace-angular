@@ -127,9 +127,9 @@ export class CommunityDropdownComponent implements OnInit, OnDestroy{
 
     // Toggle the state
     if (this.isToggled[nodeId]) {
-      this.renderer.removeStyle(element, 'background-color');
+      this.renderer.removeClass(element, 'anchor-highlight');
     } else {
-      this.renderer.setStyle(element, 'background-color', "cyan");
+      this.renderer.addClass(element, 'anchor-highlight');
     }
 
     this.isToggled[nodeId] = !this.isToggled[nodeId];

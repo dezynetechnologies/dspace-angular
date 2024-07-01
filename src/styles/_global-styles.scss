@@ -432,6 +432,10 @@ ngb-accordion {
     }
 }
 
+.anchor-highlight {
+    background-color: darken($highlight, 22%);
+}
+
 .alert-success {
     color: darken($success, 22%);
 }
